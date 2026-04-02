@@ -3,54 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IncogTube GOD</title>
+<title>IncogTube Purple</title>
 
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#0f0f0f;color:#fff}
-header{background:#202020;padding:10px;display:flex;justify-content:space-between;align-items:center}
-button{cursor:pointer}
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(180deg,#0a0a0a,#120018);
+  color:#fff;
+}
 
-.container{max-width:1200px;margin:auto;padding:10px}
-.search-bar{display:flex;gap:10px;margin:10px 0}
-input{flex:1;padding:10px;border-radius:10px;border:none}
+header{
+  background:rgba(20,0,30,.9);
+  backdrop-filter:blur(10px);
+  padding:12px 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #2a003a;
+}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-.card{background:#1f1f1f;border-radius:10px;overflow:hidden;cursor:pointer;transition:.2s}
-.card:hover{transform:scale(1.03)}
-.thumb{width:100%;aspect-ratio:16/9;object-fit:cover}
-.info{padding:8px}
-.title{font-size:.9rem;font-weight:bold}
-.channel{font-size:.8rem;color:#aaa}
+h2{
+  margin:0;
+  color:#c77dff;
+}
 
-.player{display:none;margin-bottom:15px}
-iframe{width:100%;height:400px;border:none;border-radius:10px}
+button{
+  cursor:pointer;
+  border:none;
+}
 
-.panel{position:fixed;top:0;right:-260px;width:260px;height:100%;background:#222;padding:15px;transition:.3s;z-index:20}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:15px;
+}
+
+.search-bar{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+input{
+  flex:1;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  background:#1a0026;
+  color:#fff;
+}
+
+.search-bar button{
+  padding:12px 18px;
+  border-radius:12px;
+  background:linear-gradient(45deg,#7b2cbf,#c77dff);
+  color:#fff;
+  font-weight:bold;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:#14001f;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.25s;
+  border:1px solid #2d0040;
+}
+
+.card:hover{
+  transform:translateY(-5px) scale(1.03);
+  box-shadow:0 0 15px #7b2cbf55;
+}
+
+.thumb{
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+}
+
+.info{
+  padding:10px;
+}
+
+.title{
+  font-size:.95rem;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.channel{
+  font-size:.8rem;
+  color:#bbb;
+}
+
+.player{
+  display:none;
+  margin-bottom:20px;
+}
+
+iframe{
+  width:100%;
+  height:420px;
+  border:none;
+  border-radius:16px;
+  box-shadow:0 0 20px #7b2cbf66;
+}
+
+.panel{
+  position:fixed;
+  top:0;
+  right:-260px;
+  width:260px;
+  height:100%;
+  background:#120018;
+  padding:20px;
+  transition:.3s;
+  border-left:1px solid #2d0040;
+}
+
 .panel.active{right:0}
-.panel button{display:block;width:100%;margin:10px 0;padding:10px;border:none;border-radius:8px;background:#444;color:#fff}
 
-.comment-box{margin-top:10px}
-.comment{background:#222;padding:6px;margin:5px 0;border-radius:6px;display:flex;justify-content:space-between}
-.like{color:red;font-weight:bold;margin-top:5px}
+.panel button{
+  width:100%;
+  margin:10px 0;
+  padding:12px;
+  border-radius:10px;
+  background:#1f0030;
+  color:#fff;
+}
 
-.user{font-size:.8rem;color:#0f0}
+.panel button:hover{
+  background:#7b2cbf;
+}
+
+.like{
+  margin-top:10px;
+  color:#c77dff;
+  font-weight:bold;
+}
+
+.comment{
+  background:#1a0026;
+  padding:8px;
+  margin:6px 0;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.user{
+  color:#c77dff;
+}
+
+#commentInput{
+  margin-top:10px;
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  background:#1a0026;
+  color:#fff;
+}
+
+#videoActions button{
+  margin-top:8px;
+  padding:10px;
+  border-radius:10px;
+  background:#7b2cbf;
+  color:#fff;
+}
+
 </style>
 </head>
 
 <body>
 <header>
-<h2>IncogTube GOD</h2>
+<h2>💜 IncogTube</h2>
 <button onclick="togglePanel()">⚙️</button>
 </header>
 
 <div class="panel" id="panel">
 <button onclick="setUser()">👤 Cambiar nombre</button>
-<button onclick="alert('Ranking próximamente')">🏆 Clasificación</button>
-<button onclick="logout()">🚪 Cerrar sesión</button>
+<button onclick="alert('Próximamente')">🏆 Ranking</button>
+<button onclick="logout()">🚪 Salir</button>
 </div>
 
 <div class="container">
+
 <div class="search-bar">
 <input id="q" placeholder="Buscar videos...">
 <button onclick="buscar()">Buscar</button>
@@ -60,47 +207,37 @@ iframe{width:100%;height:400px;border:none;border-radius:10px}
 
 <div id="videoActions"></div>
 
-<div class="comment-box" id="comments"></div>
-<input id="commentInput" placeholder="Comentar...">
-<button onclick="addComment()">Enviar</button>
+<div id="comments"></div>
+<input id="commentInput" placeholder="Escribe un comentario...">
+<button onclick="addComment()">Comentar</button>
 
 <div id="results" class="grid"></div>
+
 </div>
 
 <script>
 const API_KEY = "PON_TU_API_KEY";
-let currentVideo = null;
-let user = localStorage.getItem('user') || 'Anon';
+let currentVideo=null;
+let user=localStorage.getItem('user')||'Anon';
 
-function togglePanel(){
- document.getElementById('panel').classList.toggle('active');
-}
+function togglePanel(){document.getElementById('panel').classList.toggle('active')}
 
-function setUser(){
- const name = prompt('Tu nombre:');
- if(name){
- localStorage.setItem('user',name);
- user=name;
- }
-}
+function setUser(){let n=prompt('Nombre:');if(n){localStorage.setItem('user',n);user=n}}
 
-function logout(){
- localStorage.clear();
- location.reload();
-}
+function logout(){localStorage.clear();location.reload()}
 
 async function buscar(){
  const q=document.getElementById('q').value;
- const resBox=document.getElementById('results');
- resBox.innerHTML='Buscando...';
+ const box=document.getElementById('results');
+ box.innerHTML='Buscando...';
 
  const url=`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${q}&maxResults=12&key=${API_KEY}`;
 
  try{
- const res=await fetch(url);
- const data=await res.json();
+ const r=await fetch(url);
+ const d=await r.json();
 
- resBox.innerHTML=data.items.map(v=>{
+ box.innerHTML=d.items.map(v=>{
  const id=v.id.videoId;
  return `
  <div class="card" onclick="play('${id}')">
@@ -109,12 +246,8 @@ async function buscar(){
  <div class="title">${v.snippet.title}</div>
  <div class="channel">${v.snippet.channelTitle}</div>
  </div>
- </div>`;
- }).join('');
-
- }catch(e){
- resBox.innerHTML='Error cargando videos';
- }
+ </div>`}).join('');
+ }catch(e){box.innerHTML='Error'}
 }
 
 function play(id){
@@ -122,56 +255,51 @@ function play(id){
  const p=document.getElementById('player');
  p.style.display='block';
  p.innerHTML=`<iframe src="https://www.youtube.com/embed/${id}" allowfullscreen></iframe>`;
-
  renderActions();
  loadComments();
- window.scrollTo(0,0);
+ scrollTo(0,0);
 }
 
 function renderActions(){
- let likes = localStorage.getItem('like_'+currentVideo) || 0;
- document.getElementById('videoActions').innerHTML = `
- <div class="like">❤️ Likes: ${likes}</div>
- <button onclick="likeVideo()">Dar like</button>
- `;
+ let l=localStorage.getItem('like_'+currentVideo)||0;
+ document.getElementById('videoActions').innerHTML=`
+ <div class="like">💜 Likes: ${l}</div>
+ <button onclick="likeVideo()">Dar like</button>`
 }
 
 function likeVideo(){
- let likes = parseInt(localStorage.getItem('like_'+currentVideo) || 0);
- likes++;
- localStorage.setItem('like_'+currentVideo, likes);
+ let l=parseInt(localStorage.getItem('like_'+currentVideo)||0);
+ l++;
+ localStorage.setItem('like_'+currentVideo,l);
  renderActions();
 }
 
 function addComment(){
- const input=document.getElementById('commentInput');
- if(!input.value)return;
-
- let comments=JSON.parse(localStorage.getItem(currentVideo)||"[]");
- comments.push({user,text:input.value});
- localStorage.setItem(currentVideo,JSON.stringify(comments));
- input.value='';
+ const i=document.getElementById('commentInput');
+ if(!i.value)return;
+ let c=JSON.parse(localStorage.getItem(currentVideo)||"[]");
+ c.push({user,text:i.value});
+ localStorage.setItem(currentVideo,JSON.stringify(c));
+ i.value='';
  loadComments();
 }
 
-function deleteComment(index){
- let comments=JSON.parse(localStorage.getItem(currentVideo)||"[]");
- comments.splice(index,1);
- localStorage.setItem(currentVideo,JSON.stringify(comments));
+function deleteComment(i){
+ let c=JSON.parse(localStorage.getItem(currentVideo)||"[]");
+ c.splice(i,1);
+ localStorage.setItem(currentVideo,JSON.stringify(c));
  loadComments();
 }
 
 function loadComments(){
  const box=document.getElementById('comments');
- let comments=JSON.parse(localStorage.getItem(currentVideo)||"[]");
- box.innerHTML=comments.map((c,i)=>`
+ let c=JSON.parse(localStorage.getItem(currentVideo)||"[]");
+ box.innerHTML=c.map((x,i)=>`
  <div class='comment'>
- <span><span class='user'>${c.user}:</span> ${c.text}</span>
+ <span><span class='user'>${x.user}:</span> ${x.text}</span>
  <button onclick='deleteComment(${i})'>❌</button>
- </div>
- `).join('');
+ </div>`).join('');
 }
-
 </script>
 
 </body>
