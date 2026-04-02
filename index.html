@@ -5,44 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IncogTube</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #0f0f0f;
       color: #fff;
     }
-
     header {
       background: #202020;
       padding: 18px 16px;
       text-align: center;
-      box-shadow: 0 2px 12px rgba(0,0,0,.5);
       position: sticky;
       top: 0;
-      z-index: 10;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-
+    header h1 { margin: 0; font-size: 1.8rem; }
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
     }
-
     .search-bar {
       display: flex;
       gap: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
-
     .search-bar input {
       flex: 1;
       padding: 12px 14px;
@@ -51,67 +38,45 @@
       outline: none;
       font-size: 1rem;
     }
-
     .search-bar button {
       padding: 12px 18px;
       border: none;
       border-radius: 10px;
       background: #ff0000;
-      color: white;
+      color: #fff;
       font-weight: bold;
       cursor: pointer;
     }
-
-    .search-bar button:hover {
-      background: #cc0000;
-    }
-
-    .note {
-      color: #aaa;
-      font-size: .95rem;
-      margin-bottom: 18px;
-      line-height: 1.5;
-    }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 16px;
     }
-
     .card {
       background: #1f1f1f;
       border: 1px solid #333;
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 8px 22px rgba(0,0,0,.25);
     }
-
     .thumb {
       width: 100%;
-      display: block;
       aspect-ratio: 16 / 9;
       object-fit: cover;
+      display: block;
       background: #111;
     }
-
-    .info {
-      padding: 12px;
-    }
-
+    .info { padding: 12px; }
     .title {
-      font-size: 0.95rem;
+      font-size: .95rem;
       font-weight: bold;
       line-height: 1.4;
       margin-bottom: 8px;
     }
-
     .channel {
-      font-size: 0.85rem;
+      font-size: .85rem;
       color: #aaa;
       margin-bottom: 12px;
     }
-
     .link {
       display: inline-block;
       padding: 10px 14px;
@@ -119,19 +84,8 @@
       background: #ff0000;
       color: white;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: .9rem;
       font-weight: bold;
-    }
-
-    .link:hover {
-      background: #cc0000;
-    }
-
-    .footer {
-      text-align: center;
-      color: #666;
-      font-size: 0.85rem;
-      padding: 24px 16px 30px;
     }
   </style>
 </head>
@@ -145,20 +99,11 @@
       <input id="q" type="text" placeholder="Buscar videos..." />
       <button onclick="buscarVideos()">Buscar</button>
     </div>
-
-    <div class="note">
-      Escribe una búsqueda y presiona “Buscar”. Los resultados salen desde la API oficial de YouTube.
-    </div>
-
     <div id="results" class="grid"></div>
   </main>
 
-  <div class="footer">
-    Hecho para GitHub Pages con YouTube Data API v3
-  </div>
-
   <script>
-    const API_KEY = "TU_API_KEY_AQUI";
+    const API_KEY = "PEGA_AQUI_TU_API_KEY";
 
     async function buscarVideos() {
       const q = document.getElementById("q").value.trim();
@@ -166,6 +111,11 @@
 
       if (!q) {
         results.innerHTML = "";
+        return;
+      }
+
+      if (API_KEY === "PEGA_AQUI_TU_API_KEY") {
+        results.innerHTML = "<p style='color:#ff8080'>Pega tu API key para que funcione.</p>";
         return;
       }
 
@@ -191,22 +141,19 @@
           const title = item.snippet.title;
           const channel = item.snippet.channelTitle;
           const thumb = item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url || "";
-
           return `
             <div class="card">
               <img class="thumb" src="${thumb}" alt="${title}">
               <div class="info">
                 <div class="title">${title}</div>
                 <div class="channel">${channel}</div>
-                <a class="link" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener noreferrer">
-                  Ver en YouTube
-                </a>
+                <a class="link" href="https://www.youtube.com/watch?v=${id}" target="_blank" rel="noopener noreferrer">Ver en YouTube</a>
               </div>
             </div>
           `;
         }).join("");
-      } catch (err) {
-        results.innerHTML = `<p style="color:#ff8080">Error al cargar videos.</p>`;
+      } catch (e) {
+        results.innerHTML = "<p style='color:#ff8080'>Error al cargar videos.</p>";
       }
     }
 
