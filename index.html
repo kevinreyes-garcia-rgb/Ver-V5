@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi Página Web</title>
+  <title>Mi Página en GitHub Pages</title>
   <style>
     * {
       box-sizing: border-box;
@@ -13,8 +13,11 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(180deg, #0f0f0f 0%, #181818 100%);
-      color: #ffffff;
+      color: #fff;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     header {
@@ -22,20 +25,18 @@
       padding: 22px 16px;
       background: #202020;
       text-align: center;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
-      position: sticky;
-      top: 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,.5);
     }
 
-    header h1 {
+    h1 {
       margin: 0;
       font-size: 1.8rem;
     }
 
     .container {
       width: 90%;
-      max-width: 1000px;
-      margin: 30px auto 0;
+      max-width: 900px;
+      margin: 40px auto;
       text-align: center;
     }
 
@@ -43,42 +44,25 @@
       background: #1f1f1f;
       border: 1px solid #333;
       border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
     }
 
-    .video-container {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #000;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 2px solid #333;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    .info {
-      margin-top: 18px;
+    p {
       color: #b5b5b5;
-      font-size: 0.96rem;
       line-height: 1.6;
+      margin: 10px 0;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 14px;
+      margin-top: 16px;
       padding: 12px 18px;
-      background: #ff0000;
-      color: white;
-      text-decoration: none;
       border-radius: 8px;
+      text-decoration: none;
       font-weight: bold;
+      color: white;
+      background: #ff0000;
     }
 
     .btn:hover {
@@ -89,11 +73,11 @@
       display: inline-block;
       margin-top: 10px;
       padding: 12px 18px;
-      background: #2c2c2c;
-      color: white;
-      text-decoration: none;
       border-radius: 8px;
+      text-decoration: none;
       font-weight: bold;
+      color: white;
+      background: #2c2c2c;
       border: 1px solid #444;
     }
 
@@ -103,31 +87,20 @@
 
     .small {
       margin-top: 12px;
-      font-size: 0.85rem;
+      font-size: .85rem;
       color: #777;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Mi Página Web con YouTube</h1>
+    <h1>Mi Página Web</h1>
   </header>
 
   <main class="container">
     <section class="card">
-      <div class="video-container">
-        <iframe
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <div class="info">
-        <p>Este video se muestra dentro de tu sitio de GitHub Pages.</p>
-        <p>El botón rojo abre YouTube en otra pestaña.</p>
-      </div>
+      <h2>Acceso a YouTube</h2>
+      <p>El video embebido puede bloquearse en algunos casos. Esta versión abre YouTube completo en otra pestaña.</p>
 
       <a class="btn" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">
         Abrir YouTube
@@ -136,12 +109,10 @@
       <br />
 
       <a class="secondary" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">
-        Abrir este video
+        Abrir un video
       </a>
 
-      <div class="small">
-        Cambia el ID del video por el que tú quieras.
-      </div>
+      <div class="small">Cambia el enlace por el video que quieras.</div>
     </section>
   </main>
 </body>
